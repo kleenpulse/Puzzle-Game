@@ -1,0 +1,283 @@
+*,
+root {
+    padding: 0;
+    margin: 0;
+    --trans: all 400ms;
+    user-select: none;
+    --bg: linear-gradient(234deg,
+            #ffe100,
+            #fe03b9,
+            #3200e5);
+    --bgcustom: linear-gradient(180deg,
+            #424242,
+            #f7f7f7,
+            #000000);
+    --imageSize: 140px;
+    --info-bg: #00000098;
+}
+
+// =======LOADING SCREEN(IMPORT)====
+// @import 'loading';
+html {
+
+    background-image: url('../images/bg 2.jpg');
+    transition: 3s;
+    background-blend-mode: darken;
+    min-width: 900px;
+
+}
+
+body {
+    background-repeat: no-repeat !important;
+    height: 100vh;
+    overflow: hidden;
+    background-size: cover !important;
+    transition: var(--trans);
+}
+
+.gameTitle {
+    display: flex;
+    justify-content: center;
+
+    span {
+        font-size: calc(15vw * .2);
+        font-weight: 700;
+        font-family: 'Lucida Sans',
+            'Lucida Sans Regular',
+            'Lucida Grande',
+            'Lucida Sans Unicode',
+            Geneva,
+            Verdana,
+            sans-serif;
+        text-transform: uppercase;
+        background: var(--bgcustom);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+.custom {
+    background: #000104af;
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    padding: 1.2vmin;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+}
+
+#customtext {
+    font-size: 3vw;
+    font-family: cinzel;
+    background: var(--bgcustom);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    inset: none;
+    position: relative;
+
+}
+
+
+
+.container {
+
+    // display: none;
+    .content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+
+        .score {
+            margin: 2rem;
+            color: #fff;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            position: relative;
+            text-align: center;
+            background: var(--info-bg);
+            border-radius: 10px;
+            padding: 1rem 10px;
+            transition: var(--trans);
+            font-size: calc(10vw * .12);
+
+
+
+            .timecon {
+                // margin: 1rem 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            
+
+                .time {
+                    width: 100%;
+                    // text-align: right;
+                    // margin-top: 1rem;                 
+
+                    #time {
+                        
+                        font-size: 2rem;
+                        background: var(--bgcustom);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                    }
+                }
+
+
+            }
+
+
+
+            h1 {
+                // position: absolute;
+                position: relative;
+                border: 1px solid #fff;
+                padding: 0 10px;
+
+            }
+
+            .title {
+                span {
+                    font-size: medium;
+
+                    font-family: 'Courier New',
+                        Courier,
+                        monospace;
+                }
+            }
+        }
+
+        .grid-con {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bob 6s linear infinite;
+
+            @keyframes bob {
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+
+            .grid {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                transition: var(--trans);
+                box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+                padding: 1rem 0;
+                border-radius: 30px;
+                max-width: 950px;
+                min-width: 400px;
+
+                img {
+                    width: var(--imageSize);
+                    height: var(--imageSize);
+                    border-radius: 10px;
+                    cursor: pointer;
+                    margin: 5px;
+                    transition: var(--trans);
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+
+                    &:active {
+                        transform: scale(.9);
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.blurcon {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+    .blur {
+        background: #000;
+        position: absolute;
+
+        border-radius: 12px;
+
+    }
+
+    button {
+        cursor: pointer;
+        background: var(--bg);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        padding: 10px;
+        font-family: cinzel;
+        font-weight: 700;
+        font-size: 20px;
+        border-radius: 12px;
+        transition: var(--trans);
+
+        &:active {
+            transform: scale(.9);
+        }
+
+    }
+}
+
+.blurContainer {
+    backdrop-filter: blur(4px);
+}
+
+.noloader {
+    // transition: var(--trans);
+    display: none !important;
+}
+
+// If Time is 1min or less do this
+.warning {
+    background: var(--bg) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 3rem !important;
+    transition: var(--trans);
+    backdrop-filter: blur(122px);
+}
+
+@media (max-width:900px) {
+    html {
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+        .gameTitle {
+         
+    
+            span {
+                font-size: calc(25vw * .2);
+                
+            }
+        }
+        .score{
+            font-size: calc(10vw * .17) !important;
+        }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: rgb(0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bgcustom);
+    border-radius: 12px;
+}
