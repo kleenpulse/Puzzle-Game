@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cardsChosenIds = []
     const cardsWon = []
     let resultCount = 0
+    let handleGameover = document.querySelector('.gameovercon')
 
     function createBoard() {
         for (let i = 0; i < cardArr.length; i++) {
@@ -205,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadingScreen() {
         loadinTxt.textContent = 'loading.....'
         setTimeout(() => {
-            loadinTxt.textContent = 'TIPS*: Click each image & try to memorise its position before playing :)'
+            loadinTxt.textContent = 'TIPS*: Click each image & try to memorise its position before solving the puzzle :)'
 
         }, 1500);
         setTimeout(() => {
@@ -220,33 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10500);
     }
 
-    function colorCode() {
-        var hexCode1 = "";
-        var hexValues1 = "0123456789abcdef";
-
-        for (var i = 0; i < 6; i++) {
-            hexCode1 += hexValues1.charAt(Math.floor(Math.random() * hexValues1.length));
-        }
-        return hexCode1;
-    }
-
-    function randomGradient() {
-
-        var angle = Math.floor(Math.random() * 360);
-
-        var gradient = `linear-gradient(${angle}deg,
-        #${colorCode()},
-        #${colorCode()},
-        #${colorCode()})`;
-
-        const body = document.querySelector("body").style.background = gradient;
-
-
-        console.log(gradient);
-
-    }
-
-   
+    // Enable or Disable Loading screen
+    loadingScreen()
 
 
     function customMsg(msg, time) {
@@ -260,8 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Enable or Disable Loading screen
-    // loadingScreen()
+    
 
 
 
@@ -283,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     })();
 
-    document.querySelector('button').addEventListener('click', blurContainer)
+    document.querySelector('.blurbtn').addEventListener('click', blurContainer)
     function blurContainer(){
         const container = document.querySelector('body')
         container.classList.toggle('blurContainer')
@@ -292,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var timer = duration,
             minutes, seconds;
 
-        display.textContent = `TIME: 05: 00`;
+        display.textContent = `TIME: 05:00`;
 
         setInterval(function () {
             minutes = parseInt(timer / 60, 10)
@@ -309,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (--timer < 0) {
                 display.textContent = '00:00';
-                loadingScreen()
+                callGameover()
                 // document.write("GAME OVER ")
 
             }
@@ -342,6 +317,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 7000 * i);
         }
 
+    }
+    function callGameover(){
+        handleGameover.style.display = 'flex';
     }
 
 })

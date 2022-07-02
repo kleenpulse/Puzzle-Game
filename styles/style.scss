@@ -12,12 +12,16 @@ root {
             #424242,
             #f7f7f7,
             #000000);
+    --rainbow: linear-gradient(90deg,
+            #00b3ff,
+            #d40dbd,
+            #ffb006);
     --imageSize: 140px;
     --info-bg: #00000098;
 }
 
 // =======LOADING SCREEN(IMPORT)====
-// @import 'loading';
+@import 'loading';
 html {
 
     background-image: url('../images/bg 2.jpg');
@@ -87,7 +91,7 @@ body {
 
 .container {
 
-    // display: none;
+    display: none;
     .content {
         display: flex;
         justify-content: center;
@@ -113,7 +117,7 @@ body {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-            
+
 
                 .time {
                     width: 100%;
@@ -121,7 +125,7 @@ body {
                     // margin-top: 1rem;                 
 
                     #time {
-                        
+
                         font-size: 2rem;
                         background: var(--bgcustom);
                         -webkit-background-clip: text;
@@ -160,6 +164,7 @@ body {
             justify-content: center;
             align-items: center;
             animation: bob 6s linear infinite;
+            animation-play-state: paused;
 
             @keyframes bob {
                 50% {
@@ -214,24 +219,26 @@ body {
 
     }
 
-    button {
-        cursor: pointer;
-        background: var(--bg);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        padding: 10px;
-        font-family: cinzel;
-        font-weight: 700;
-        font-size: 20px;
-        border-radius: 12px;
-        transition: var(--trans);
 
-        &:active {
-            transform: scale(.9);
-        }
+}
 
+button {
+    cursor: pointer;
+    background: var(--bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 10px;
+    font-family: cinzel;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 12px;
+    transition: var(--trans);
+
+    &:active {
+        transform: scale(.9);
     }
+
 }
 
 .blurContainer {
@@ -251,7 +258,7 @@ body {
     background-clip: text;
     font-size: 3rem !important;
     transition: var(--trans);
-    backdrop-filter: blur(122px);
+    
 }
 
 @media (max-width:900px) {
@@ -259,17 +266,106 @@ body {
         overflow-x: scroll;
         overflow-y: hidden;
     }
-        .gameTitle {
-         
+
+    .gameTitle {
+
+
+        span {
+            font-size: calc(25vw * .2);
+
+        }
+    }
+
+    .score {
+        font-size: calc(10vw * .17) !important;
+    }
+}
+
+.gameovercon {
+    height: 110vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cinzel;
+    background: #000000;
+    display: none;
     
-            span {
-                font-size: calc(25vw * .2);
-                
+
+    .gameover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h1 {
+
+            font-size: calc(20vw * .4);
+            background: var(--rainbow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: growh1 3s ease forwards;
+            @keyframes growh1{
+                0% {
+                        transform: scale(.02);
+                    }
+                100%{
+                    transform: scale(2);
+                }
             }
         }
-        .score{
-            font-size: calc(10vw * .17) !important;
+
+        button {
+            border: 1px solid #c60789;
+            font-size: calc(20vw * .2);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            border-radius: 15px;
+            margin-top: 2rem;
+                        opacity: 0;
+            animation: growbtn 3s 3s ease forwards;
+            
+                @keyframes growbtn {
+                    0% {
+                        transform: translateY(-100px);
+                    }
+            
+                    100% {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 0;
+
+                background: var(--rainbow);
+                z-index: -1;
+                box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+                transition: all 250ms;
+            }
+
+            &:hover {
+                border: none;
+                -webkit-text-fill-color: #fff;
+                box-shadow: 5px 5px 42px #8c00ff,
+                    -5px -5px 42px #ff009d,
+                    0 0 82px #03fffb;
+                transition: all 400ms ease-in;
+
+
+                &::before {
+                    width: 100%;
+                }
+            }
         }
+    }
 }
 
 ::-webkit-scrollbar {

@@ -12,8 +12,145 @@ root {
           #424242,
           #f7f7f7,
           #000000);
+  --rainbow: linear-gradient(90deg,
+          #00b3ff,
+          #d40dbd,
+          #ffb006);
   --imageSize: 140px;
   --info-bg: #00000098;
+}
+
+.loader-con {
+  height: 100vh !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #000;
+  color: #fff;
+}
+
+.tease {
+  position: absolute;
+  top: 10%;
+  font-family: "work sans", sans-serif;
+  font-size: 3rem;
+  transform: scale(0);
+  animation: tease 6s 3s ease-in-out forwards;
+}
+@keyframes tease {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+loader {
+  top: 0;
+  left: 0;
+  border-radius: 25%;
+  width: 250px;
+  height: 250px;
+  background: var(--bg);
+  display: block;
+  transition: all 1s ease;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+degree {
+  border-radius: 25%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(47deg, #32179f, #0f90d8, #fb4aa6);
+  display: block;
+  transition: all 1s ease;
+  transform: rotate(45deg);
+}
+
+.spin {
+  animation: spin 2s ease infinite;
+}
+@keyframes spin {
+  50% {
+    transform: rotate(180deg);
+    width: 25px;
+    height: 25px;
+    top: 6px;
+    left: 6px;
+  }
+}
+
+.degree-spin {
+  animation: grow 2s ease infinite;
+}
+@keyframes grow {
+  50% {
+    transform: scale(0.03);
+    height: 1px;
+    width: 1px;
+    left: 12px;
+    top: 12px;
+  }
+}
+
+.text {
+  font-family: "work sans", sans-serif;
+  font-size: 2vw;
+  background: var(--bg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 3rem;
+  inset: 0;
+  isolation: isolate;
+  opacity: 0.5;
+  animation: blink 2s ease infinite;
+}
+@keyframes blink {
+  50% {
+    filter: brightness(120%);
+    opacity: 1;
+  }
+}
+
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+#counter {
+  counter-reset: num var(--num);
+  font-size: 2rem;
+  background: var(--bg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: percent 10s forwards ease-in-out;
+}
+#counter::before {
+  content: counter(num);
+  background: var(--bg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+@keyframes percent {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: 100;
+  }
 }
 
 html {
@@ -71,6 +208,9 @@ body {
   position: relative;
 }
 
+.container {
+  display: none;
+}
 .container .content {
   display: flex;
   justify-content: center;
@@ -118,6 +258,7 @@ body {
   justify-content: center;
   align-items: center;
   animation: bob 6s linear infinite;
+  animation-play-state: paused;
 }
 @keyframes bob {
   50% {
@@ -161,7 +302,8 @@ body {
   position: absolute;
   border-radius: 12px;
 }
-.blurcon button {
+
+button {
   cursor: pointer;
   background: var(--bg);
   -webkit-background-clip: text;
@@ -174,7 +316,7 @@ body {
   border-radius: 12px;
   transition: var(--trans);
 }
-.blurcon button:active {
+button:active {
   transform: scale(0.9);
 }
 
@@ -193,7 +335,6 @@ body {
   background-clip: text;
   font-size: 3rem !important;
   transition: var(--trans);
-  backdrop-filter: blur(122px);
 }
 
 @media (max-width: 900px) {
@@ -210,6 +351,79 @@ body {
     font-size: 1.7vw !important;
   }
 }
+.gameovercon {
+  height: 110vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: cinzel;
+  background: #000000;
+  display: none;
+}
+.gameovercon .gameover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.gameovercon .gameover h1 {
+  font-size: 8vw;
+  background: var(--rainbow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: growh1 3s ease forwards;
+}
+@keyframes growh1 {
+  0% {
+    transform: scale(0.02);
+  }
+  100% {
+    transform: scale(2);
+  }
+}
+.gameovercon .gameover button {
+  border: 1px solid #c60789;
+  font-size: 4vw;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  border-radius: 15px;
+  margin-top: 2rem;
+  opacity: 0;
+  animation: growbtn 3s 3s ease forwards;
+}
+@keyframes growbtn {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.gameovercon .gameover button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: var(--rainbow);
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+.gameovercon .gameover button:hover {
+  border: none;
+  -webkit-text-fill-color: #fff;
+  box-shadow: 5px 5px 42px #8c00ff, -5px -5px 42px #ff009d, 0 0 82px #03fffb;
+  transition: all 400ms ease-in;
+}
+.gameovercon .gameover button:hover::before {
+  width: 100%;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   background: rgb(0, 0, 0);

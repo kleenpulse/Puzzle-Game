@@ -24,6 +24,10 @@
 
         50%{
             transform: scale(1);
+            opacity: 1;
+        }
+        100%{
+            opacity: .7;
         }
 
     }
@@ -94,7 +98,7 @@ degree {
 
 .text {
     font-family: 'work sans', sans-serif;
-    font-size: 3rem;
+    font-size: calc(10vw * .2);
     background: var(--bg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

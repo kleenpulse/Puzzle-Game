@@ -12,6 +12,12 @@
 </head>
 
 <body id="bg">
+    <div class="gameovercon">
+        <div class="gameover">
+            <h1>Game Over</h1>
+            <button onclick="window.location.reload()">Restart</button>
+        </div>
+    </div>
     <div id="lesstime"></div>
     <div class="loader-con">
         <div class="tease">
@@ -27,13 +33,13 @@
         </div>
         <div id="counter">%</div>
     </div>
-    <div class="gameTitle">
-
-        <span id="GameTitle">
-            Puzzle Game
-        </span>
-    </div>
     <div class="container">
+        <div class="gameTitle">
+    
+            <span id="GameTitle">
+                Puzzle Game
+            </span>
+        </div>
 
         <div class="content">
 
@@ -65,7 +71,7 @@
         <div class="blurcon">
 
             <div class="blur">
-                <button>Blur/Unblur BACKGROUND</button>
+                <button class="blurbtn">Blur/Unblur BACKGROUND</button>
             </div>
         </div>
     </div>
