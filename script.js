@@ -1,5 +1,4 @@
 
-document.addEventListener('DOMContentLoaded', function () {
 
     // TODO: show total number of pairs = DONE
     // TODO: show remaining cards to pair = DONE
@@ -288,16 +287,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    // Preload Images
+    var preloaded = 0
+    var backgrounds = ['images/bg1.jpg',
+        'images/bg3.jpg',
+        'images/bg4.jpg',
+        'images/bg5.jpg',
+        'images/bg6.jpg',
+        'images/bg2.jpg']
+    
+    function preloader(e) {
+        for(var i = 0; i < backgrounds.length; i++){
+            var bgImg = new Image()
+            bgImg.addEventListener('load',progress, true)
+            bgImg.src = bgImg[i]
+        }
+      }
+    function progress(){
+        preloaded++;
+
+        if(preloaded == backgrounds.length){
+            randomBackground()
+        }
+    }
+this.addEventListener('DOMContentLoaded', preloader, true)
+
     function randomBackground() {
         window.clearTimeout()
         const root = document.querySelector('html')
         let index = 0
-        let backgrounds = ['images/bg1.jpg',
-            'images/bg3.jpg',
-            'images/bg4.jpg',
-            'images/bg5.jpg',
-            'images/bg6.jpg',
-            'images/bg2.jpg']
+        
    
         for (i = 0; i < backgrounds.length; i++) {
             setTimeout(() => {
@@ -319,4 +338,4 @@ document.addEventListener('DOMContentLoaded', function () {
         handleGameover.style.display = 'flex';
     }
 
-})
+
