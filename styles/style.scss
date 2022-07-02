@@ -21,10 +21,10 @@ root {
 }
 
 // =======LOADING SCREEN(IMPORT)====
-@import 'loading';
+// @import 'loading';
 html {
 
-    background-image: url('../images/bg 2.jpg');
+    background-image: url('../images/bg2.jpg');
     transition: 3s;
     background-blend-mode: darken;
     min-width: 900px;
@@ -91,7 +91,7 @@ body {
 
 .container {
 
-    display: none;
+    // display: none;
     .content {
         display: flex;
         justify-content: center;

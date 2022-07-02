@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
 
     // TODO: show total number of pairs = DONE
     // TODO: show remaining cards to pair = DONE
@@ -107,7 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
     ]
-
+   
+ 
     // Sort Array randomly
     cardArr.sort(() => 0.5 - Math.random())
     let loadinTxt = document.querySelector('#txt')
@@ -197,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardsChosen.length === 2) {
             setTimeout(checkMatch, 300);
         }
-        
+
     }
 
     // ==============LOADING SCREEN==============
@@ -222,23 +223,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Enable or Disable Loading screen
-    loadingScreen()
+    // loadingScreen()
 
 
     function customMsg(msg, time) {
         var styler = document.createElement("div")
         styler.classList.add('custom')
-        styler.innerHTML = `<h1 h1 id = "customtext" > ${ msg } </h1 > `
+        styler.innerHTML = `<h1 h1 id = "customtext" > ${msg} </h1 > `
         setTimeout(function () {
             styler.parentNode.removeChild(styler)
         }, time)
         document.body.appendChild(styler)
     }
-
-
-    
-
-
 
     // Timer Function
     // Run only once per page reload
@@ -259,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     document.querySelector('.blurbtn').addEventListener('click', blurContainer)
-    function blurContainer(){
+    function blurContainer() {
         const container = document.querySelector('body')
         container.classList.toggle('blurContainer')
     }
@@ -276,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
-            display.textContent = `TIME: ${ minutes }:${ seconds } `;
+            display.textContent = `TIME: ${minutes}:${seconds} `;
             if (timer <= 60) {
                 display.classList.add('warning')
                 // alert(timer)
@@ -296,13 +292,13 @@ document.addEventListener('DOMContentLoaded', () => {
         window.clearTimeout()
         const root = document.querySelector('html')
         let index = 0
-        let backgrounds = ['images/bg 1.jpg',
-            'images/bg 3.jpg',
-            'images/bg 4.jpg',
-            'images/bg 5.jpg',
-            'images/bg 6.jpg',
-            'images/bg 2.jpg']
-
+        let backgrounds = ['images/bg1.jpg',
+            'images/bg3.jpg',
+            'images/bg4.jpg',
+            'images/bg5.jpg',
+            'images/bg6.jpg',
+            'images/bg2.jpg']
+   
         for (i = 0; i < backgrounds.length; i++) {
             setTimeout(() => {
                 root.style.background = `rgba(0,0,0,.3) url('${backgrounds[index]}')`
@@ -318,7 +314,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     }
-    function callGameover(){
+    randomBackground()
+    function callGameover() {
         handleGameover.style.display = 'flex';
     }
 
