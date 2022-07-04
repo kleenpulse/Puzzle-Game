@@ -122,6 +122,14 @@ function imagesCreate() {
         
         
     }
+    for (let i = 0; i < backgrounds.length; i++) {
+
+        let bgimage = document.createElement('img')
+
+        bgimage.setAttribute('src', backgrounds[i])
+console.log(bgimage)
+
+    }
     
     
 
