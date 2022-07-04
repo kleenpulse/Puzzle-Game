@@ -208,9 +208,6 @@ body {
   position: relative;
 }
 
-.container {
-  display: none;
-}
 .container .content {
   display: flex;
   justify-content: center;
