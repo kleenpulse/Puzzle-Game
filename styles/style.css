@@ -22,9 +22,14 @@ root {
 
 html {
   background-image: url("../images/bg2.jpg");
-  transition: 3s;
+  transition: all 3s ease;
   background-blend-mode: darken;
   min-width: 900px;
+}
+
+#images {
+  overflow: scroll;
+  position: absolute;
 }
 
 body {

@@ -25,12 +25,19 @@ root {
 html {
 
     background-image: url('../images/bg2.jpg');
-    transition: 3s;
+    transition: all 3s ease;
     background-blend-mode: darken;
     min-width: 900px;
 
 }
-
+#images{
+    overflow: scroll;
+    position: absolute;
+    // opacity: 0;
+    // position: fixed;
+    // z-index: -9999;
+    // display: none;
+}
 body {
     background-repeat: no-repeat !important;
     height: 100vh;
