@@ -17,17 +17,19 @@ root {
             #d40dbd,
             #ffb006);
     --imageSize: 140px;
+    --imageSizeSmall: 80px;
     --info-bg: #00000098;
 }
 
 // =======LOADING SCREEN(IMPORT)====
-@import 'loading';
+// @import 'loading';
+
 html {
 
     background-image: url('../images/bg2.jpg');
     transition: all 3s ease;
     background-blend-mode: darken;
-    min-width: 900px;
+    // min-width: 900px;
 
 }
 
@@ -91,7 +93,8 @@ body {
 
 .container {
 
-    display: none;
+    // display: none;
+
     .content {
         display: flex;
         justify-content: center;
@@ -258,13 +261,14 @@ button {
     background-clip: text;
     font-size: 3rem !important;
     transition: var(--trans);
-    
+
 }
 
 @media (max-width:900px) {
     html {
-        overflow-x: scroll;
-        overflow-y: hidden;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        
     }
 
     .gameTitle {
@@ -279,6 +283,16 @@ button {
     .score {
         font-size: calc(10vw * .17) !important;
     }
+
+    .grid {
+        display: grid;
+        grid-template-columns: auto auto !important;
+        
+        img {
+            width: var(--imageSizeSmall) !important;
+            height: var(--imageSizeSmall) !important;
+        }
+    }
 }
 
 .gameovercon {
@@ -289,7 +303,7 @@ button {
     font-family: cinzel;
     background: #000000;
     display: none;
-    
+
 
     .gameover {
         display: flex;
@@ -305,11 +319,13 @@ button {
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: growh1 3s ease forwards;
-            @keyframes growh1{
+
+            @keyframes growh1 {
                 0% {
-                        transform: scale(.02);
-                    }
-                100%{
+                    transform: scale(.02);
+                }
+
+                100% {
                     transform: scale(2);
                 }
             }
@@ -323,19 +339,19 @@ button {
             z-index: 1;
             border-radius: 15px;
             margin-top: 2rem;
-                        opacity: 0;
+            opacity: 0;
             animation: growbtn 3s 3s ease forwards;
-            
-                @keyframes growbtn {
-                    0% {
-                        transform: translateY(-100px);
-                    }
-            
-                    100% {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
+
+            @keyframes growbtn {
+                0% {
+                    transform: translateY(-100px);
                 }
+
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
 
             &::before {
                 content: '';
