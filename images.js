@@ -28,7 +28,7 @@ const cardArr = [
     //I added some additional images
     {
         name: 'apple',
-        img: 'images/apple.svg',
+        img: 'images/apple.png',
     },
     {
         name: 'bread',
@@ -79,7 +79,7 @@ const cardArr = [
     //I added some additional images(2nd batch)
     {
         name: 'apple',
-        img: 'images/apple.svg',
+        img: 'images/apple.png',
     },
     {
         name: 'bread',
