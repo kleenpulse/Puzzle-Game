@@ -195,14 +195,7 @@ function randomBackgroun() {
     window.clearTimeout()
     const root = document.querySelector('html')
     let index = 0
-    let backgrounds = [
-        'images/bg1.jpg',
-        'images/bg3.jpg',
-        'images/bg4.jpg',
-        'images/bg5.jpg',
-        'images/bg6.jpg',
-        'images/bg2.jpg'
-    ]
+    
 
     for (i = 0; i < backgrounds.length; i++) {
         setTimeout(() => {
