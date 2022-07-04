@@ -143,7 +143,7 @@ var callStartTimerFunc = (function () {
     return function () {
         if (!executed) {
             executed = true;
-            const five = 60 * 5
+            const five = 60 * 3
 
             const display = document.querySelector('#time');
             startTimer(five, display);
@@ -163,7 +163,7 @@ function startTimer(duration, display) {
     var timer = duration,
         minutes, seconds;
 
-    display.textContent = `TIME: 05:00`;
+    display.textContent = `TIME: 03:00`;
 
     setInterval(function () {
         minutes = parseInt(timer / 60, 10)
