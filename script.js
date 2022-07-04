@@ -123,7 +123,7 @@ function loadingScreen() {
 }
 
 // Enable or Disable Loading screen
-// loadingScreen()
+loadingScreen()
 
 
 function customMsg(msg, time) {
