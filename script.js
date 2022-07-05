@@ -129,7 +129,7 @@ loadingScreen()
 function customMsg(msg, time) {
     var styler = document.createElement("div")
     styler.classList.add('custom')
-    styler.innerHTML = `<h1 h1 id = "customtext" > ${msg} </h1 > `
+    styler.innerHTML = `<h1 id = "customtext" > ${msg} </h1 > `
     setTimeout(function () {
         styler.parentNode.removeChild(styler)
     }, time)
