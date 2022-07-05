@@ -190,6 +190,7 @@ function startTimer(duration, display) {
 
 
 // cooler backgrounds but makes page unresponsive
+backgrounds.sort(() => 0.5 - Math.random())
 
 function randomBackgroun() {
     window.clearTimeout()
