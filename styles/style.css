@@ -16,9 +16,16 @@ root {
           #00b3ff,
           #d40dbd,
           #ffb006);
-  --imageSize: 140px;
+  --rainbow-2: linear-gradient(45deg,
+          #0ff,
+          #d40dbd,
+          #ffb006);
+  --imageSize: 120px;
   --imageSizeSmall: 80px;
   --info-bg: #00000098;
+  --c-light-text: #333;
+  --c-background: #dedede;
+  --c-light-interactive: mediumvioletred;
 }
 
 .loader-con {
@@ -29,6 +36,7 @@ root {
   flex-direction: column;
   background: #000;
   color: #fff;
+  cursor: none;
 }
 
 .tease {
@@ -160,11 +168,32 @@ html {
   background-blend-mode: darken;
 }
 
+audio {
+  position: absolute;
+  z-index: -9999999;
+  opacity: 0;
+}
+
 body {
   background-repeat: no-repeat !important;
   height: 100vh;
   overflow: hidden;
   background-size: cover !important;
+  transition: var(--trans);
+}
+
+#sayHello {
+  font-family: cinzel;
+}
+
+.gamerName {
+  width: fit-content;
+  background: var(--rainbow-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(10px);
   transition: var(--trans);
 }
 
@@ -208,6 +237,9 @@ body {
   position: relative;
 }
 
+.container {
+  display: none;
+}
 .container .content {
   display: flex;
   justify-content: center;
@@ -335,7 +367,8 @@ button:active {
 }
 
 @media (max-width: 900px) {
-  html {
+  html,
+body {
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -388,7 +421,24 @@ button:active {
     transform: scale(2);
   }
 }
-.gameovercon .gameover button {
+
+.gameWon {
+  background: url(../images/congrats.gif);
+  background-size: cover;
+  position: absolute;
+  height: 120vh;
+  z-index: 99999;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.gameWon #restart {
+  backdrop-filter: blur(10px);
+}
+
+#restart {
   border: 1px solid #c60789;
   font-size: 4vw;
   overflow: hidden;
@@ -408,7 +458,7 @@ button:active {
     transform: translateY(0);
   }
 }
-.gameovercon .gameover button::before {
+#restart::before {
   content: "";
   position: absolute;
   top: 0;
@@ -420,13 +470,13 @@ button:active {
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;
 }
-.gameovercon .gameover button:hover {
+#restart:hover {
   border: none;
   -webkit-text-fill-color: #fff;
   box-shadow: 5px 5px 42px #8c00ff, -5px -5px 42px #ff009d, 0 0 82px #03fffb;
   transition: all 400ms ease-in;
 }
-.gameovercon .gameover button:hover::before {
+#restart:hover::before {
   width: 100%;
 }
 

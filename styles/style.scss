@@ -16,9 +16,16 @@ root {
             #00b3ff,
             #d40dbd,
             #ffb006);
-    --imageSize: 140px;
+    --rainbow-2: linear-gradient(45deg,
+            #0ff,
+            #d40dbd,
+            #ffb006);
+    --imageSize: 120px;
     --imageSizeSmall: 80px;
     --info-bg: #00000098;
+    --c-light-text: #333;
+    --c-background: #dedede;
+    --c-light-interactive: mediumvioletred;
 }
 
 // =======LOADING SCREEN(IMPORT)====
@@ -32,12 +39,33 @@ html {
     // min-width: 900px;
 
 }
+audio{
+    position: absolute;
+    z-index: -9999999;
+    opacity: 0;
+}
 
 body {
     background-repeat: no-repeat !important;
     height: 100vh;
     overflow: hidden;
+
     background-size: cover !important;
+    transition: var(--trans);
+}
+
+#sayHello {
+    font-family: cinzel;
+}
+
+.gamerName {
+    width: fit-content;
+    background: var(--rainbow-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
     transition: var(--trans);
 }
 
@@ -93,7 +121,7 @@ body {
 
 .container {
 
-    // display: none;
+    display: none;
 
     .content {
         display: flex;
@@ -265,10 +293,12 @@ button {
 }
 
 @media (max-width:900px) {
-    html {
+
+    html,
+    body {
         overflow-y: scroll;
         overflow-x: hidden;
-        
+
     }
 
     .gameTitle {
@@ -287,7 +317,7 @@ button {
     .grid {
         display: grid;
         grid-template-columns: auto auto !important;
-        
+
         img {
             width: var(--imageSizeSmall) !important;
             height: var(--imageSizeSmall) !important;
@@ -295,6 +325,7 @@ button {
     }
 }
 
+// Gameover styling
 .gameovercon {
     height: 110vh;
     display: flex;
@@ -331,55 +362,76 @@ button {
             }
         }
 
-        button {
-            border: 1px solid #c60789;
-            font-size: calc(20vw * .2);
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-            border-radius: 15px;
-            margin-top: 2rem;
-            opacity: 0;
-            animation: growbtn 3s 3s ease forwards;
 
-            @keyframes growbtn {
-                0% {
-                    transform: translateY(-100px);
-                }
+    }
+}
 
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
+// GameWon
 
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 0;
+.gameWon {
+    background: url(../images/congrats.gif);
+    background-size: cover;
+    position: absolute;
+    height: 120vh;
+    z-index: 99999;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
 
-                background: var(--rainbow);
-                z-index: -1;
-                box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-                transition: all 250ms;
-            }
+    #restart {
+        backdrop-filter: blur(10px);
+    }
+}
 
-            &:hover {
-                border: none;
-                -webkit-text-fill-color: #fff;
-                box-shadow: 5px 5px 42px #8c00ff,
-                    -5px -5px 42px #ff009d,
-                    0 0 82px #03fffb;
-                transition: all 400ms ease-in;
+#restart {
+    border: 1px solid #c60789;
+    font-size: calc(20vw * .2);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    border-radius: 15px;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: growbtn 3s 3s ease forwards;
+
+    @keyframes growbtn {
+        0% {
+            transform: translateY(-100px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+
+        background: var(--rainbow);
+        z-index: -1;
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+    }
+
+    &:hover {
+        border: none;
+        -webkit-text-fill-color: #fff;
+        box-shadow: 5px 5px 42px #8c00ff,
+            -5px -5px 42px #ff009d,
+            0 0 82px #03fffb;
+        transition: all 400ms ease-in;
 
 
-                &::before {
-                    width: 100%;
-                }
-            }
+        &::before {
+            width: 100%;
         }
     }
 }

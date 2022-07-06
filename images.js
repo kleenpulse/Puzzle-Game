@@ -50,6 +50,14 @@ const cardArr = [
         name: 'plantain',
         img: 'images/plantain.png',
     },
+    {
+        name: 'banana',
+        img: 'images/banana.png',
+    },
+    {
+        name: 'strawberry',
+        img: 'images/strawberry.png',
+    },
 
     // second batch starts here
     {
@@ -101,6 +109,14 @@ const cardArr = [
         name: 'plantain',
         img: 'images/plantain.png',
     },
+    {
+        name: 'banana',
+        img: 'images/banana.png',
+    },
+    {
+        name: 'strawberry',
+        img: 'images/strawberry.png',
+    },
 
 ]
 
@@ -114,26 +130,43 @@ let backgrounds = [
     'images/bg7.png',
     'images/bg8.png'
 ]
+let musicList = [
+    'music/Ara.mp3',
+    'music/cardClick.mp3',
+    'music/cardError.wav',
+    'music/cardMatched.mp3',
+    'music/liquidTime.mp3'
+]
+for (let i = 0; i < musicList.length; i++) {
+
+        let audioFile = document.createElement('audio')
+        audioFile.setAttribute('src', musicList[i])
+        document.documentElement.appendChild(audioFile)
+console.log(audioFile)
+
+
+}
+
 
 function imagesCreate() {
     for (let i = 0; i < cardArr.length; i++) {
-        
+
         let imdCard = document.createElement('img')
-        
+
         imdCard.setAttribute('src', cardArr[i].img)
-        
-        
+
+
     }
     for (let i = 0; i < backgrounds.length; i++) {
 
         let bgimage = document.createElement('img')
 
         bgimage.setAttribute('src', backgrounds[i])
-console.log(bgimage)
+        console.log(bgimage)
 
     }
-    
-    
+
+
 
 }
 imagesCreate()

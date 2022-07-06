@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Puzzle Game</title>
+    <script src="images.js"></script>
+
+</head>
+
+<body id="bg">
+   <div class="gameWon">
+    <button id="restart" onclick="window.location.reload()">Restart</button>
+   </div>
+    <div class="gameovercon">
+        <div class="gameover">
+            <h1>Game Over</h1>
+            <button id="restart" onclick="window.location.reload()">Restart</button>
+        </div>
+    </div>
+    <div id="lesstime"></div>
+    <div class="loader-con">
+        <div class="tease">
+            <p>How good is your memory?</p>
+        </div>
+        <loader class="spin">
+            <degree class="degree-spin">
+
+            </degree>
+        </loader>
+        <div class="text" id="txt">
+
+        </div>
+        <div id="counter">%</div>
+    </div>
+    <div class="container">
+        <div class="gameTitle">
+    
+            <span id="GameTitle">
+                Puzzle Game
+            </span>
+        </div>
+
+        <div class="content">
+
+            <div class="score">
+                <h1 id="result"> </h1>
+                <h1 id="sayHello"></h1>
+                <div class="timecon">
+                    <p class="title">
+                    
+                    
+                        <span><b>GUIDE:</b> Each card has a twin, i.e, whichever card you clicked on has an exact replica, Find
+                            the other pair to SCORE. </span>
+                    </p>
+                    <div class="time">
+                        
+                        <h3 id="time">TIME:3MIN</h3>
+    
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="grid-con">
+                <div class="grid" id="grid">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="blurcon">
+
+            <div class="blur">
+                <button class="blurbtn" >Blur Background</button>
+            </div>
+        </div>
+    </div>
+
+    <script  src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+ *,
+ root {
+     padding: 0;
+     margin: 0;
+     --trans: all 400ms;
+     user-select: none;
+     --bg: linear-gradient(234deg,
+             #ffe100,
+             #fe03b9,
+             #3200e5);
+     --bgcustom: linear-gradient(180deg,
+             #000000,
+             #f7f7f7);
+     --rainbow: linear-gradient(90deg,
+             #00b3ff,
+             #d40dbd,
+             #ffb006);
+     --c-light-text: #333;
+     --c-background: #dedede;
+ }
+
+ body {
+     background-color: #ffffff;
+     background-image: radial-gradient(circle, rgba(0, 0, 0, 0.085) 0%, rgba(4, 1, 5, 0.216) 100%);
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+     height: 100vh;
+     display: grid;
+     place-items: center;
+     font-family: cinzel ;
+ }
+
+ .form-con {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     border: 1px solid rgba(51, 51, 51, 0.136);
+     border-radius: 20px;
+     padding: 2rem 10vw;
+     backdrop-filter: blur(6px);
+ }
+
+ .contact {
+     p {
+         background: var(--bgcustom);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         background-clip: text;
+         font-size: calc(15vw * .2);
+         font-weight: 700;
+     }
+     
+ }
+
+
+ /* From uiverse.io by @alexruix */
+ .input-group {
+     position: relative;
+ }
+
+ .input {
+     border: solid 1.5px #9e9e9e;
+     border-radius: 1rem;
+     background: none;
+     padding: 1rem;
+     font-size: 1rem;
+     transition: var(--trans);
+ }
+
+ .first {
+     margin-bottom: 1em;
+     margin-top: 2em;
+ }
+
+ .user-label {
+     position: absolute;
+     left: 15px;
+     color: var(--c-light-text);
+     pointer-events: none;
+     transform: translateY(1rem);
+     transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+     transition-timing-function: ease-in-out;
+ }
+
+ .input:focus,
+ input:valid {
+     outline: none;
+     border: 1.5px solid #000000;
+ }
+
+ .input:focus~label,
+ input:valid~label {
+     transform: translateY(-50%) scale(0.8);
+     background-color:#e3e3e3;
+     padding: 0 .2em;
+     color: #000000;
+     text-transform: uppercase;
+     letter-spacing: 1.3px;
+ }
+ input:focus:invalid{
+    border:1px solid red;
+    ~label{
+        color: red;
+    }
+ }
+input:focus:valid {
+    border: 1px solid green;
+
+    ~label {
+        color: green;
+    }
+}
+ /* From uiverse.io by @alexmaracinaru */
+
+ .btn {
+     display: flex;
+     justify-content: center;
+     .submit{
+        padding:.17rem 1rem;
+        font-family: cinzel;
+        font-weight: 600;
+     }
+ }
+
+ .submit {
+     border: 1px solid #333;
+     font-size: calc(10vw * .25);
+     overflow: hidden;
+     position: relative;
+     z-index: 1;
+     border-radius: 10px;
+     margin-top: 2rem;
+     background: transparent;
+     transition: var(--trans);
+
+     &::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         height: 100%;
+         width: 0;
+         background: var(--rainbow);
+         z-index: -1;
+         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+         transition: all 250ms;
+     }
+
+     &:hover {
+         border: none;
+         -webkit-text-fill-color: #fff;
+         box-shadow: 5px 5px 42px #8c00ff,
+             -5px -1px 42px #ff009d,
+             0 0 82px #03fffb;
+         transition: all 400ms ease-in;
+
+         &::before {
+             width: 100%;
+         }
+     }
+ }
+ @media (min-width: 1200px) {
+    .btn{
+        .submit{
+     transition: var(--trans);
+     font-size: calc(10vw * .125);
+        }
+    }
+ }

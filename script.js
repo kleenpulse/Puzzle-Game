@@ -1,8 +1,9 @@
 
+// import gamerName from '/login.js'
 
 // TODO: show total number of pairs = DONE
 // TODO: show remaining cards to pair = DONE
-
+let gamerName = localStorage.getItem('gameName')
 
 // Sort Array randomly
 cardArr.sort(() => 0.5 - Math.random())
@@ -13,7 +14,41 @@ let cardsChosen = []
 let cardsChosenIds = []
 const cardsWon = []
 let resultCount = 0
+let winnerCircle = document.querySelector('.gameWon')
 let handleGameover = document.querySelector('.gameovercon')
+let greetUser = document.querySelector('#sayHello')
+
+greetUser.classList.add('gamerName')
+
+// Say Hello=============
+function sayHello() {
+
+    let welcome;
+    let date = new Date();
+    let helloHour = date.getHours();
+    let helloMin = date.getMinutes();
+    let helloSec = date.getSeconds();
+    if (helloMin < 10) {
+        helloMin = "0" + helloMin;
+    }
+    if (helloSec < 10) {
+        helloSec = "0" + helloSec;
+    }
+    if (helloHour < 12) {
+        welcome = "Good Morning";
+    } else if (helloHour < 16) {
+        welcome = "Good Afternoon";
+    } else {
+        welcome = "Good Evening";
+    }
+    if (gamerName == null) {
+        gamerName = "Player"
+    }
+    greetUser.textContent = `${welcome} ${gamerName}`
+}
+
+sayHello()
+// Say Hello=============
 
 
 function createBoard() {
@@ -45,14 +80,21 @@ function checkMatch() {
 
 
 
+
         cards[imageOneId].setAttribute('src', 'images/fireworks.gif')
         cards[imageTwoId].setAttribute('src', 'images/fireworks.gif')
+        cardMatchedSound()
+
+        setTimeout(() => {
+            cards[imageOneId].style.display = 'none'
+            cards[imageTwoId].style.display = 'none'
+
+        }, 1000);
 
         cards[imageOneId].removeEventListener('click', flipCard)
 
         cards[imageTwoId].removeEventListener('click', flipCard)
         cardsWon.push(cardsChosen)
-
         customMsg(`${cardsWon.length} down`, 1000)
 
 
@@ -61,6 +103,7 @@ function checkMatch() {
     if (cardsChosen[0] != cardsChosen[1] || cardsChosenIds[0] === cardsChosenIds[1]) {
         cards[imageOneId].setAttribute('src', 'images/blank.png')
         cards[imageTwoId].setAttribute('src', 'images/blank.png')
+        clickCardError()
         customMsg("Oops!!", 500)
 
     }
@@ -78,17 +121,79 @@ function checkMatch() {
             resultDisplay.textContent = "Game completed, You've match them all"
         }, 1500);
 
+        setTimeout(() => {
+            winnerCircle.style.display = 'flex'
+            winnerAudio()
 
+        }, 2000);
     }
 
 }
+// ======= AUDIOs ========
+
+// =============cardError audio
+
+function cardMatchedSound() {
+    let audioEl = document.createElement('audio')
+    audioEl.setAttribute('src', 'music/cardMatched.mp3')
+    audioEl.play()
+
+}
+
+// =============cardError audio
+
+// =============cardError audio
+
+function clickCardError() {
+    let audioEl = document.createElement('audio')
+    audioEl.setAttribute('src', 'music/cardError.wav')
+    
+    audioEl.play()
+
+}
+
+// =============cardError audio
+
+// =============cardFlip audio
+
+function clickCardAudio() {
+    let audioEl = document.createElement('audio')
+    audioEl.setAttribute('src', 'music/cardClick.mp3')
+    audioEl.play()
+
+}
+
+// =============cardFlip audio
+
+// In-Game Audio
+function inGameAudio() {
+    let audioEl = document.createElement('audio')
+    audioEl.setAttribute('src', 'music/liquidTime.mp3')
+    audioEl.play()
+    audioEl.loop = true
+
+}
+
+// =============In-Game audio
+
+// winner Audio
+function winnerAudio() {
+    let audioEl = document.createElement('audio')
+    audioEl.setAttribute('src', 'music/Ara.mp3')
+    audioEl.play()
+    audioEl.loop = true
+
+}
+
+// =============winner audio
+
+// ======= AUDIOs END========
+
 
 function flipCard() {
-
     //listens for image click and
     // Starts the timer
-
-
+    clickCardAudio()
     callStartTimerFunc()
     const cardId = this.getAttribute('data-id')
     cardsChosen.push(cardArr[cardId].name)
@@ -104,6 +209,7 @@ function flipCard() {
 // ==============LOADING SCREEN==============
 // 
 
+const gameCon = document.querySelector('.container')
 function loadingScreen() {
     loadinTxt.textContent = 'loading.....'
     setTimeout(() => {
@@ -114,7 +220,6 @@ function loadingScreen() {
         loadinTxt.textContent = 'loading GAME.....'
     }, 8000);
     const loaderCon = document.querySelector('.loader-con')
-    const gameCon = document.querySelector('.container')
 
     setTimeout(() => {
         loaderCon.classList.add('noloader')
@@ -148,16 +253,24 @@ var callStartTimerFunc = (function () {
             const display = document.querySelector('#time');
             startTimer(five, display);
             randomBackgroun()
-
+            inGameAudio()
 
         }
     };
 })();
 
-document.querySelector('.blurbtn').addEventListener('click', blurContainer)
+let blurBtn = document.querySelector('.blurbtn')
+blurBtn.addEventListener('click', blurContainer)
+
+const bodyEl = document.querySelector('body')
 function blurContainer() {
-    const container = document.querySelector('body')
-    container.classList.toggle('blurContainer')
+    bodyEl.classList.toggle('blurContainer')
+    if (blurBtn.innerHTML === 'Blur Background') {
+        blurBtn.innerHTML = 'Unblur Background'
+    } else {
+        blurBtn.innerHTML = 'Blur Background'
+    }
+
 }
 function startTimer(duration, display) {
     var timer = duration,
@@ -196,9 +309,9 @@ function randomBackgroun() {
     window.clearTimeout()
     const root = document.querySelector('html')
     let index = 0
-    
 
-    for (i = 0; i < backgrounds.length; i++) {
+
+    for (let i = 0; i < backgrounds.length; i++) {
         setTimeout(() => {
             root.style.background = `rgba(0,0,0,.3) url('${backgrounds[index]}')`
             root.style.backgroundSize = "cover";
@@ -215,8 +328,12 @@ function randomBackgroun() {
 }
 
 
-
 function callGameover() {
     handleGameover.style.display = 'flex';
+    gameCon.style.display = 'none'
+    bodyEl.style.overflow = 'hidden'
+    handleGameover.style.overflow = 'hidden'
+
 }
+
 
