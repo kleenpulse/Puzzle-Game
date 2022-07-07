@@ -36,10 +36,14 @@ html {
     background-image: url('../images/bg2.jpg');
     transition: all 3s ease;
     background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     // min-width: 900px;
 
 }
-audio{
+
+audio {
     position: absolute;
     z-index: -9999999;
     opacity: 0;
@@ -67,11 +71,35 @@ body {
     margin-bottom: 1rem;
     backdrop-filter: blur(10px);
     transition: var(--trans);
+    text-transform: uppercase;
+    font-size: calc(7vw * .14);
 }
 
 .gameTitle {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .link {
+        text-decoration: none;
+        font-family: cinzel;
+        color: #fff;
+        border-width: 2px;
+        border-style: solid;
+        border-image: var(--rainbow);
+        border-image-slice: 1;
+        font-size: calc(15vw * .1);
+        transition: var(--trans);
+        margin-top: 1rem;
+        background: #000;
+
+        @media (max-width:900px) {
+            transition: var(--trans);
+            font-size: calc(15vw * .15);
+        }
+
+    }
 
     span {
         font-size: calc(15vw * .2);
@@ -106,14 +134,18 @@ body {
 }
 
 #customtext {
-    font-size: 3vw;
+    font-size: calc(15vw * .41);
     font-family: cinzel;
-    background: var(--bgcustom);
+    background: var(--rainbow);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     inset: none;
     position: relative;
+    border-width: 2px;
+    border-style: solid;
+    border-image: var(--rainbow);
+    border-image-slice: 1;
 
 }
 
@@ -129,6 +161,7 @@ body {
         flex-direction: column;
 
 
+
         .score {
             margin: 2rem;
             color: #fff;
@@ -139,9 +172,13 @@ body {
             border-radius: 10px;
             padding: 1rem 10px;
             transition: var(--trans);
-            font-size: calc(10vw * .12);
+            font-size: calc(5vw * .2);
+            backdrop-filter: blur(6px);
 
-
+            @media (max-width:500px) {
+                transition: var(--trans);
+                margin: 1rem 10px;
+            }
 
             .timecon {
                 // margin: 1rem 0;
@@ -173,8 +210,11 @@ body {
             h1 {
                 // position: absolute;
                 position: relative;
-                border: 1px solid #fff;
-                padding: 0 10px;
+                padding: 5px 10px;
+                border-width: 2px;
+                border-style: solid;
+                border-image: var(--rainbow);
+                border-image-slice: 1;
 
             }
 
@@ -212,6 +252,7 @@ body {
                 box-shadow: 0 0 20px rgba(0, 0, 0, .3);
                 padding: 1rem 0;
                 border-radius: 30px;
+
                 max-width: 950px;
                 min-width: 400px;
 
@@ -240,11 +281,11 @@ body {
 .blurcon {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     .blur {
         background: #000;
-        position: absolute;
+        // position: absolute;
 
         border-radius: 12px;
 
@@ -292,7 +333,7 @@ button {
 
 }
 
-@media (max-width:900px) {
+@media (max-width:1000px) {
 
     html,
     body {
@@ -386,12 +427,14 @@ button {
 }
 
 #restart {
-    border: 1px solid #c60789;
+    border-width: 2px;
+    border-style: solid;
+    border-image: var(--rainbow);
+    border-image-slice: 1;
     font-size: calc(20vw * .2);
     overflow: hidden;
     position: relative;
     z-index: 1;
-    border-radius: 15px;
     margin-top: 2rem;
     opacity: 0;
     animation: growbtn 3s 3s ease forwards;

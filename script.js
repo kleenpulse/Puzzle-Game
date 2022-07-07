@@ -89,13 +89,13 @@ function checkMatch() {
             cards[imageOneId].style.display = 'none'
             cards[imageTwoId].style.display = 'none'
 
-        }, 1000);
+        }, 500);
 
         cards[imageOneId].removeEventListener('click', flipCard)
 
         cards[imageTwoId].removeEventListener('click', flipCard)
         cardsWon.push(cardsChosen)
-        customMsg(`${cardsWon.length} down`, 1000)
+        customMsg(`${cardsWon.length} down`, 700)
 
 
 
@@ -134,9 +134,9 @@ function checkMatch() {
 // =============cardError audio
 
 function cardMatchedSound() {
-    let audioEl = document.createElement('audio')
-    audioEl.setAttribute('src', 'music/cardMatched.mp3')
-    audioEl.play()
+    let audioMatched = document.createElement('audio')
+    audioMatched.setAttribute('src', 'music/cardMatched.mp3')
+    audioMatched.play()
 
 }
 
@@ -145,10 +145,10 @@ function cardMatchedSound() {
 // =============cardError audio
 
 function clickCardError() {
-    let audioEl = document.createElement('audio')
-    audioEl.setAttribute('src', 'music/cardError.wav')
-    
-    audioEl.play()
+    let audioError = document.createElement('audio')
+    audioError.setAttribute('src', 'music/cardError.wav')
+
+    audioError.play()
 
 }
 
@@ -157,9 +157,9 @@ function clickCardError() {
 // =============cardFlip audio
 
 function clickCardAudio() {
-    let audioEl = document.createElement('audio')
-    audioEl.setAttribute('src', 'music/cardClick.mp3')
-    audioEl.play()
+    let audioCardFlip = document.createElement('audio')
+    audioCardFlip.setAttribute('src', 'music/cardClick.mp3')
+    audioCardFlip.play()
 
 }
 
@@ -167,10 +167,12 @@ function clickCardAudio() {
 
 // In-Game Audio
 function inGameAudio() {
-    let audioEl = document.createElement('audio')
-    audioEl.setAttribute('src', 'music/liquidTime.mp3')
-    audioEl.play()
-    audioEl.loop = true
+    var audioIngame = document.createElement('audio')
+    audioIngame.setAttribute('src', 'music/liquidTime.mp3')
+    audioIngame.setAttribute('id', 'ingameAudio')
+    document.documentElement.appendChild(audioIngame)
+    audioIngame.play()
+    audioIngame.loop = true
 
 }
 
@@ -178,11 +180,13 @@ function inGameAudio() {
 
 // winner Audio
 function winnerAudio() {
-    let audioEl = document.createElement('audio')
-    audioEl.setAttribute('src', 'music/Ara.mp3')
-    audioEl.play()
-    audioEl.loop = true
+    let audioWinner = document.createElement('audio')
+    audioWinner.setAttribute('src', 'music/Ara.mp3')
+    audioWinner.play()
+    audioWinner.loop = true
 
+    let audioToStop = document.querySelector('#ingameAudio')
+        audioToStop.pause()
 }
 
 // =============winner audio

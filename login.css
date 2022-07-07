@@ -117,9 +117,13 @@ input:focus:valid ~ label {
   justify-content: center;
 }
 .btn .submit {
-  padding: 0.17rem 1rem;
+  padding: 1rem;
   font-family: cinzel;
   font-weight: 600;
+  cursor: pointer;
+}
+.btn .submit:active {
+  transform: scale(0.9);
 }
 
 .submit {

@@ -166,6 +166,9 @@ html {
   background-image: url("../images/bg2.jpg");
   transition: all 3s ease;
   background-blend-mode: darken;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 audio {
@@ -195,11 +198,34 @@ body {
   margin-bottom: 1rem;
   backdrop-filter: blur(10px);
   transition: var(--trans);
+  text-transform: uppercase;
+  font-size: 0.98vw;
 }
 
 .gameTitle {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.gameTitle .link {
+  text-decoration: none;
+  font-family: cinzel;
+  color: #fff;
+  border-width: 2px;
+  border-style: solid;
+  border-image: var(--rainbow);
+  border-image-slice: 1;
+  font-size: 1.5vw;
+  transition: var(--trans);
+  margin-top: 1rem;
+  background: #000;
+}
+@media (max-width: 900px) {
+  .gameTitle .link {
+    transition: var(--trans);
+    font-size: 2.25vw;
+  }
 }
 .gameTitle span {
   font-size: 3vw;
@@ -227,14 +253,18 @@ body {
 }
 
 #customtext {
-  font-size: 3vw;
+  font-size: 6.15vw;
   font-family: cinzel;
-  background: var(--bgcustom);
+  background: var(--rainbow);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   inset: none;
   position: relative;
+  border-width: 2px;
+  border-style: solid;
+  border-image: var(--rainbow);
+  border-image-slice: 1;
 }
 
 .container {
@@ -255,7 +285,14 @@ body {
   border-radius: 10px;
   padding: 1rem 10px;
   transition: var(--trans);
-  font-size: 1.2vw;
+  font-size: 1vw;
+  backdrop-filter: blur(6px);
+}
+@media (max-width: 500px) {
+  .container .content .score {
+    transition: var(--trans);
+    margin: 1rem 10px;
+  }
 }
 .container .content .score .timecon {
   display: flex;
@@ -274,8 +311,11 @@ body {
 }
 .container .content .score h1 {
   position: relative;
-  border: 1px solid #fff;
-  padding: 0 10px;
+  padding: 5px 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-image: var(--rainbow);
+  border-image-slice: 1;
 }
 .container .content .score .title span {
   font-size: medium;
@@ -324,11 +364,10 @@ body {
 .blurcon {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .blurcon .blur {
   background: #000;
-  position: absolute;
   border-radius: 12px;
 }
 
@@ -366,7 +405,7 @@ button:active {
   transition: var(--trans);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   html,
 body {
     overflow-y: scroll;
@@ -439,12 +478,14 @@ body {
 }
 
 #restart {
-  border: 1px solid #c60789;
+  border-width: 2px;
+  border-style: solid;
+  border-image: var(--rainbow);
+  border-image-slice: 1;
   font-size: 4vw;
   overflow: hidden;
   position: relative;
   z-index: 1;
-  border-radius: 15px;
   margin-top: 2rem;
   opacity: 0;
   animation: growbtn 3s 3s ease forwards;

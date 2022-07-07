@@ -119,9 +119,13 @@ input:focus:valid {
      display: flex;
      justify-content: center;
      .submit{
-        padding:.17rem 1rem;
+        padding: 1rem;
         font-family: cinzel;
         font-weight: 600;
+        cursor: pointer;
+        &:active{
+            transform: scale(.9);
+        }
      }
  }
 

@@ -1,4 +1,9 @@
 CountDown/test.html
-scss
-.scss
-.css.map
+
+
+### Sass ###
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+*.scss
