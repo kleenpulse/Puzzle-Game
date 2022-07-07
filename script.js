@@ -14,6 +14,8 @@ let cardsChosen = []
 let cardsChosenIds = []
 const cardsWon = []
 let resultCount = 0
+var isPaused = false
+
 let winnerCircle = document.querySelector('.gameWon')
 let handleGameover = document.querySelector('.gameovercon')
 let greetUser = document.querySelector('#sayHello')
@@ -134,6 +136,7 @@ function checkMatch() {
     cardsChosenIds = []
 
     if (cardsWon.length == cardArr.length / 2) {
+        pauseTime()
         resultDisplay.textContent = 'Running anti-cheat.....'
         setTimeout(() => {
             resultDisplay.textContent = "Game completed, You've match them all"
@@ -147,69 +150,70 @@ function checkMatch() {
     }
 
 }
-// ======= AUDIOs ========
+{    // ======= AUDIOs ========
 
-// =============cardError audio
+    // =============cardError audio
 
-function cardMatchedSound() {
-    let audioMatched = document.createElement('audio')
-    audioMatched.setAttribute('src', 'music/cardMatched.mp3')
-    audioMatched.play()
+    function cardMatchedSound() {
+        let audioMatched = document.createElement('audio')
+        audioMatched.setAttribute('src', 'music/cardMatched.mp3')
+        audioMatched.play()
 
-}
+    }
 
-// =============cardError audio
+    // =============cardError audio
 
-// =============cardError audio
+    // =============cardError audio
 
-function clickCardError() {
-    let audioError = document.createElement('audio')
-    audioError.setAttribute('src', 'music/cardError.wav')
+    function clickCardError() {
+        let audioError = document.createElement('audio')
+        audioError.setAttribute('src', 'music/cardError.wav')
 
-    audioError.play()
+        audioError.play()
 
-}
+    }
 
-// =============cardError audio
+    // =============cardError audio
 
-// =============cardFlip audio
+    // =============cardFlip audio
 
-function clickCardAudio() {
-    let audioCardFlip = document.createElement('audio')
-    audioCardFlip.setAttribute('src', 'music/cardClick.mp3')
-    audioCardFlip.play()
+    function clickCardAudio() {
+        let audioCardFlip = document.createElement('audio')
+        audioCardFlip.setAttribute('src', 'music/cardClick.mp3')
+        audioCardFlip.play()
 
-}
+    }
 
-// =============cardFlip audio
+    // =============cardFlip audio
 
-// In-Game Audio
-function inGameAudio() {
-    var audioIngame = document.createElement('audio')
-    audioIngame.setAttribute('src', 'music/liquidTime.mp3')
-    audioIngame.setAttribute('id', 'ingameAudio')
-    document.documentElement.appendChild(audioIngame)
-    audioIngame.play()
-    audioIngame.loop = true
+    // In-Game Audio
+    function inGameAudio() {
+        var audioIngame = document.createElement('audio')
+        audioIngame.setAttribute('src', 'music/liquidTime.mp3')
+        audioIngame.setAttribute('id', 'ingameAudio')
+        document.documentElement.appendChild(audioIngame)
+        audioIngame.play()
+        audioIngame.loop = true
 
-}
+    }
 
-// =============In-Game audio
+    // =============In-Game audio
 
-// winner Audio
-function winnerAudio() {
-    let audioWinner = document.createElement('audio')
-    audioWinner.setAttribute('src', 'music/Ara.mp3')
-    audioWinner.play()
-    audioWinner.loop = true
+    // winner Audio
+    function winnerAudio() {
+        let audioWinner = document.createElement('audio')
+        audioWinner.setAttribute('src', 'music/Ara.mp3')
+        audioWinner.play()
+        audioWinner.loop = true
 
-    let audioToStop = document.querySelector('#ingameAudio')
+        let audioToStop = document.querySelector('#ingameAudio')
         audioToStop.pause()
-}
+    }
 
 // =============winner audio
 
-// ======= AUDIOs END========
+}// ======= AUDIOs END========
+
 
 
 function flipCard() {
@@ -217,6 +221,7 @@ function flipCard() {
     // Starts the timer
     clickCardAudio()
     callStartTimerFunc()
+    playTime()
     const cardId = this.getAttribute('data-id')
     cardsChosen.push(cardArr[cardId].name)
     cardsChosenIds.push(cardId)
@@ -264,8 +269,24 @@ function customMsg(msg, time) {
     contentCon.appendChild(styler)
 }
 
+
+
+let blurBtn = document.querySelector('.blurbtn')
+blurBtn.addEventListener('click', blurContainer)
+
+const bodyEl = document.querySelector('body')
+function blurContainer() {
+    bodyEl.classList.toggle('blurContainer')
+    if (blurBtn.innerHTML === 'Blur Background') {
+        blurBtn.innerHTML = 'Unblur Background'
+    } else {
+        blurBtn.innerHTML = 'Blur Background'
+    }
+
+}
 // Timer Function
 // Run only once per page reload
+
 var callStartTimerFunc = (function () {
     var executed = false;
     return function () {
@@ -281,20 +302,16 @@ var callStartTimerFunc = (function () {
         }
     };
 })();
-
-let blurBtn = document.querySelector('.blurbtn')
-blurBtn.addEventListener('click', blurContainer)
-
-const bodyEl = document.querySelector('body')
-function blurContainer() {
-    bodyEl.classList.toggle('blurContainer')
-    if (blurBtn.innerHTML === 'Blur Background') {
-        blurBtn.innerHTML = 'Unblur Background'
-    } else {
-        blurBtn.innerHTML = 'Blur Background'
-    }
-
+// Play timer
+function playTime() {
+    isPaused = false
 }
+
+// Pause Timer
+function pauseTime() {
+    isPaused = true
+}
+
 function startTimer(duration, display) {
     var timer = duration,
         minutes, seconds;
@@ -302,24 +319,26 @@ function startTimer(duration, display) {
     display.textContent = `TIME: 03:00`;
 
     setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+        if(!isPaused){
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
 
-        display.textContent = `TIME: ${minutes}:${seconds} `;
-        if (timer <= 60) {
-            display.classList.add('warning')
-            // alert(timer)
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = `TIME: ${minutes}:${seconds} `;
+            if (timer <= 60) {
+                display.classList.add('warning')
+                // alert(timer)
+            }
+
+            if (--timer < 0) {
+                display.textContent = '00:00';
+                callGameover()
+            }
         }
-
-        if (--timer < 0) {
-            display.textContent = '00:00';
-            callGameover()
-            // document.write("GAME OVER ")
-
-        }
+        
     }, 1000);
 
 }
