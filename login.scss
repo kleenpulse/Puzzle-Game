@@ -17,6 +17,7 @@
              #ffb006);
      --c-light-text: #333;
      --c-background: #dedede;
+    transition: var(--trans);
  }
 
  body {
@@ -29,7 +30,9 @@
      height: 100vh;
      display: grid;
      place-items: center;
-     font-family: cinzel ;
+     font-family: cinzel !important;
+     overflow: hidden;
+     transition: var(--trans);
  }
 
  .form-con {
@@ -40,25 +43,39 @@
      border: 1px solid rgba(51, 51, 51, 0.136);
      border-radius: 20px;
      padding: 2rem 10vw;
+     width: 100%;
      backdrop-filter: blur(6px);
  }
 
  .contact {
      p {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
          background: var(--bgcustom);
          -webkit-background-clip: text;
          -webkit-text-fill-color: transparent;
          background-clip: text;
          font-size: calc(15vw * .2);
          font-weight: 700;
+     transition: var(--trans);
      }
      
+ }
+ form{
+    min-width: 300px;
+    transition: var(--trans);
+    margin-top: 7rem;
  }
 
 
  /* From uiverse.io by @alexruix */
  .input-group {
      position: relative;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
  }
 
  .input {
@@ -93,11 +110,12 @@
 
  .input:focus~label,
  input:valid~label {
-     transform: translateY(-50%) scale(0.8);
-     background-color:#e3e3e3;
+     transform: translateY(-100%);
+     margin-top: -5px;
+     background-color:#dedddd;
      padding: 0 .2em;
      color: #000000;
-     text-transform: uppercase;
+     font-weight: 600;
      letter-spacing: 1.3px;
  }
  input:focus:invalid{

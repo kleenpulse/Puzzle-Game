@@ -18,7 +18,25 @@ let winnerCircle = document.querySelector('.gameWon')
 let handleGameover = document.querySelector('.gameovercon')
 let greetUser = document.querySelector('#sayHello')
 
+// Additional Cool stuff=============
 greetUser.classList.add('gamerName')
+greetUser.addEventListener('mouseenter', ()=>{
+    customMsg('Hey', 500)
+})
+greetUser.addEventListener('mouseleave', () => {
+    customMsg('Bye now', 500)
+})
+greetUser.addEventListener('click', () => {
+    if (gamerName !== null && gamerName !== 'Player') {
+        
+        customMsg(`Hi ${gamerName}`, 1000)
+    }
+    else{
+        customMsg(`Hey!, You Clicked me`, 1000)
+    }
+})
+// Additional Cool stuff [END]=============
+
 
 // Say Hello=============
 function sayHello() {
@@ -44,7 +62,7 @@ function sayHello() {
     if (gamerName == null) {
         gamerName = "Player"
     }
-    greetUser.textContent = `${welcome} ${gamerName}`
+    greetUser.textContent = `${welcome}  ✧${gamerName}✧`
 }
 
 sayHello()
@@ -234,15 +252,16 @@ function loadingScreen() {
 // Enable or Disable Loading screen
 loadingScreen()
 
-
+let contentCon = document.querySelector('.content')
 function customMsg(msg, time) {
+   
     var styler = document.createElement("div")
-    styler.classList.add('custom')
-    styler.innerHTML = `<h1 id = "customtext" > ${msg} </h1 > `
+    styler.setAttribute('class', 'customCon')
+    styler.innerHTML = `<h1 id="customtext" > ${msg} </h1> `
     setTimeout(function () {
         styler.parentNode.removeChild(styler)
     }, time)
-    document.body.appendChild(styler)
+    contentCon.appendChild(styler)
 }
 
 // Timer Function

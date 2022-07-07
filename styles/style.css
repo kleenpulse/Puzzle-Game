@@ -2,6 +2,7 @@
 root {
   padding: 0;
   margin: 0;
+  outline: none !important;
   --trans: all 400ms;
   user-select: none;
   --bg: linear-gradient(234deg,
@@ -17,6 +18,10 @@ root {
           #d40dbd,
           #ffb006);
   --rainbow-2: linear-gradient(45deg,
+          #0ff,
+          #d40dbd,
+          #ffb006);
+  --rainbow-3: linear-gradient(-45deg,
           #0ff,
           #d40dbd,
           #ffb006);
@@ -196,10 +201,42 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1rem;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   transition: var(--trans);
   text-transform: uppercase;
   font-size: 0.98vw;
+  filter: brightness(120%);
+  animation: changeBG 10s ease infinite;
+}
+@media (max-width: 1300px) {
+  .gamerName {
+    font-size: 1.12vw;
+  }
+}
+@media (max-width: 950px) {
+  .gamerName {
+    font-size: 1.4vw;
+  }
+}
+@media (max-width: 750px) {
+  .gamerName {
+    font-size: 2vw;
+  }
+}
+@media (max-width: 500px) {
+  .gamerName {
+    font-size: 2.5vw;
+  }
+}
+@keyframes changeBG {
+  50% {
+    transition: var(--trans);
+    background: var(--rainbow-3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: brightness(150%);
+  }
 }
 
 .gameTitle {
@@ -238,18 +275,13 @@ body {
   background-clip: text;
 }
 
-.custom {
-  background: rgba(0, 1, 4, 0.6862745098);
+.customCon {
+  width: 100%;
   position: absolute;
-  width: auto;
-  height: auto;
-  top: 50%;
-  left: 50%;
-  padding: 1.2vmin;
-  border-radius: 20px;
-  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
+  align-items: center;
+  z-index: 9;
 }
 
 #customtext {
@@ -260,11 +292,17 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   inset: none;
+  backdrop-filter: blur(20px);
   position: relative;
   border-width: 2px;
   border-style: solid;
   border-image: var(--rainbow);
   border-image-slice: 1;
+}
+@media (min-width: 1200px) {
+  #customtext {
+    font-size: 4.34vw;
+  }
 }
 
 .container {
@@ -291,7 +329,8 @@ body {
 @media (max-width: 500px) {
   .container .content .score {
     transition: var(--trans);
-    margin: 1rem 10px;
+    margin: 1rem 0px;
+    border-radius: 0;
   }
 }
 .container .content .score .timecon {
@@ -522,7 +561,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
   background: rgb(0, 0, 0);
 }
 

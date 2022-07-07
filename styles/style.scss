@@ -2,6 +2,7 @@
 root {
     padding: 0;
     margin: 0;
+    outline: none !important;
     --trans: all 400ms;
     user-select: none;
     --bg: linear-gradient(234deg,
@@ -17,6 +18,10 @@ root {
             #d40dbd,
             #ffb006);
     --rainbow-2: linear-gradient(45deg,
+            #0ff,
+            #d40dbd,
+            #ffb006);
+    --rainbow-3: linear-gradient(-45deg,
             #0ff,
             #d40dbd,
             #ffb006);
@@ -69,10 +74,42 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 1rem;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     transition: var(--trans);
     text-transform: uppercase;
     font-size: calc(7vw * .14);
+    filter: brightness(120%);
+    animation: changeBG 10s ease infinite;
+
+    @media (max-width:1300px) {
+        font-size: calc(8vw * .14);
+    }
+
+    @media (max-width:950px) {
+        font-size: calc(10vw * .14);
+    }
+
+    @media (max-width:750px) {
+        font-size: calc(10vw * .2);
+    }
+
+    @media (max-width:500px) {
+        font-size: calc(10vw * .25);
+    }
+
+    @keyframes changeBG {
+        50% {
+            transition: var(--trans);
+            background: var(--rainbow-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+
+            filter: brightness(150%);
+        }
+
+
+    }
 }
 
 .gameTitle {
@@ -119,18 +156,16 @@ body {
     }
 }
 
-.custom {
-    background: #000104af;
+.customCon{
+    // background: #000;
+    // height: 10%;
+    width: 100%;
     position: absolute;
-    width: auto;
-    height: auto;
-    top: 50%;
-    left: 50%;
-    padding: 1.2vmin;
-    border-radius: 20px;
-    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
+    align-items: center;
+    z-index: 9;
+    
 }
 
 #customtext {
@@ -141,15 +176,17 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     inset: none;
+    backdrop-filter: blur(20px);
     position: relative;
     border-width: 2px;
     border-style: solid;
     border-image: var(--rainbow);
     border-image-slice: 1;
+    @media (min-width: 1200px) {
+    font-size: calc(14vw * .31);
+    }
 
 }
-
-
 
 .container {
 
@@ -177,7 +214,8 @@ body {
 
             @media (max-width:500px) {
                 transition: var(--trans);
-                margin: 1rem 10px;
+                margin: 1rem 0px;
+                border-radius: 0;
             }
 
             .timecon {
@@ -480,7 +518,7 @@ button {
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
     background: rgb(0, 0, 0);
 }
 

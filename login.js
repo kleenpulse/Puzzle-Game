@@ -453,7 +453,7 @@ submitBtn.addEventListener('mouseenter', () => {
 
     submitBtn.innerHTML = 'Start Game..?'
     setTimeout(() => {
-    submitBtn.innerHTML = 'Start Game'
+        submitBtn.innerHTML = 'Start Game'
 
     }, 2000);
 })
@@ -468,20 +468,51 @@ gamer.addEventListener('submit', (event) => {
     var gamerName = gamerData.value
     localStorage.setItem('gameName', gamerName)
 
-    submitBtn.addEventListener('click', () => {
-
-        submitBtn.innerHTML = 'Starting...Game!'
-    })
-
     setTimeout(() => {
 
         gamer.submit()
-    }, 2000)
+    }, 1000)
 
 });
 
 let getName = localStorage.getItem('gameName')
-if(getName !== null){
+if (getName !== null) {
     inputVal.value = getName.toUpperCase()
 }
 
+// Say Hello=============
+function sayHello() {
+
+    let welcome;
+    let date = new Date();
+    let helloHour = date.getHours();
+    let helloMin = date.getMinutes();
+    let helloSec = date.getSeconds();
+    if (helloMin < 10) {
+        helloMin = "0" + helloMin;
+    }
+    if (helloSec < 10) {
+        helloSec = "0" + helloSec;
+    }
+    if (helloHour < 12) {
+        welcome = "Good Morning";
+    } else if (helloHour < 16) {
+        welcome = "Good Afternoon";
+    } else {
+        welcome = "Good Evening";
+    }
+
+    let login = document.getElementById('login')
+    login.addEventListener('mouseenter', () => {
+
+        login.textContent = ` ✧${welcome}✧`
+    })
+    login.addEventListener('mouseout', () => {
+
+        login.textContent = ` Login`
+    })
+
+}
+
+sayHello()
+// Say Hello=============
