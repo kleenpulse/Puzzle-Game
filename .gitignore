@@ -2,8 +2,7 @@ CountDown/test.html
 
 
 ### Sass ###
-.sass-cache/
-*.css.map
-*.sass.map
-*.scss.map
-*.scss
+
+styles/style.css.map
+styles/*.scss.map
+styles/style.scss
