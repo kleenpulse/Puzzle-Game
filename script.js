@@ -379,3 +379,13 @@ function callGameover() {
 }
 
 
+
+function congratsGif(){
+    let congrats = document.createElement('img')
+    congrats.setAttribute('src', 'images/congrats.gif')
+    document.documentElement.appendChild(congrats)
+    congrats.setAttribute('style', 'position: absolute; opacity:0; z-index:-999999999;')
+    console.log(congrats)
+}
+
+congratsGif()
