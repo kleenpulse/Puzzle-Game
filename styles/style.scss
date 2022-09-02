@@ -1,5 +1,5 @@
 *,
-root {
+:root {
     padding: 0;
     margin: 0;
     outline: none !important;
@@ -34,7 +34,7 @@ root {
 }
 
 // =======LOADING SCREEN(IMPORT)====
-// @import 'loading';
+@import 'loading';
 
 html {
 
@@ -180,8 +180,8 @@ body {
     position: relative;
     border-width: 2px;
     border-style: solid;
-    border-image: var(--rainbow);
     border-image-slice: 1;
+    border-image: var(--rainbow);
     @media (min-width: 1200px) {
     font-size: calc(14vw * .31);
     }

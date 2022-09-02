@@ -98,9 +98,6 @@ function checkMatch() {
     const imageTwoId = cardsChosenIds[1]
     if (cardsChosen[0] == cardsChosen[1] && cardsChosenIds[0] !== cardsChosenIds[1]) {
 
-
-
-
         cards[imageOneId].setAttribute('src', 'images/fireworks.gif')
         cards[imageTwoId].setAttribute('src', 'images/fireworks.gif')
         cardMatchedSound()
@@ -116,8 +113,6 @@ function checkMatch() {
         cards[imageTwoId].removeEventListener('click', flipCard)
         cardsWon.push(cardsChosen)
         customMsg(`${cardsWon.length} down`, 700)
-
-
 
     }
     if (cardsChosen[0] != cardsChosen[1] || cardsChosenIds[0] === cardsChosenIds[1]) {
@@ -344,7 +339,7 @@ function startTimer(duration, display) {
 }
 
 
-// cooler backgrounds but makes page unresponsive
+// shuffle backgrounds on Page load
 backgrounds.sort(() => 0.5 - Math.random())
 
 function randomBackgroun() {
@@ -378,13 +373,11 @@ function callGameover() {
 
 }
 
-
-
 function congratsGif(){
     let congrats = document.createElement('img')
     congrats.setAttribute('src', 'images/congrats.gif')
     document.documentElement.appendChild(congrats)
-    congrats.setAttribute('style', 'position: absolute; opacity:0; z-index:-999999999;')
+    congrats.setAttribute('style', 'position: fixed; opacity:0; z-index:-999999999;')
     console.log(congrats)
 }
 

@@ -1,5 +1,5 @@
 *,
-root {
+:root {
   padding: 0;
   margin: 0;
   outline: none !important;
@@ -31,6 +31,140 @@ root {
   --c-light-text: #333;
   --c-background: #dedede;
   --c-light-interactive: mediumvioletred;
+}
+
+.loader-con {
+  height: 100vh !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #000;
+  color: #fff;
+  cursor: none;
+}
+
+.tease {
+  position: absolute;
+  top: 10%;
+  font-family: "work sans", sans-serif;
+  font-size: 3rem;
+  transform: scale(0);
+  animation: tease 6s 3s ease-in-out forwards;
+}
+@keyframes tease {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+loader {
+  top: 0;
+  left: 0;
+  border-radius: 25%;
+  width: 250px;
+  height: 250px;
+  background: var(--bg);
+  display: block;
+  transition: all 1s ease;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+degree {
+  border-radius: 25%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(47deg, #32179f, #0f90d8, #fb4aa6);
+  display: block;
+  transition: all 1s ease;
+  transform: rotate(45deg);
+}
+
+.spin {
+  animation: spin 2s ease infinite;
+}
+@keyframes spin {
+  50% {
+    transform: rotate(180deg);
+    width: 25px;
+    height: 25px;
+    top: 6px;
+    left: 6px;
+  }
+}
+
+.degree-spin {
+  animation: grow 2s ease infinite;
+}
+@keyframes grow {
+  50% {
+    transform: scale(0.03);
+    height: 1px;
+    width: 1px;
+    left: 12px;
+    top: 12px;
+  }
+}
+
+.text {
+  font-family: "work sans", sans-serif;
+  font-size: 2vw;
+  background: var(--bg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 3rem;
+  inset: 0;
+  isolation: isolate;
+  opacity: 0.5;
+  animation: blink 2s ease infinite;
+}
+@keyframes blink {
+  50% {
+    filter: brightness(120%);
+    opacity: 1;
+  }
+}
+
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+#counter {
+  counter-reset: num var(--num);
+  font-size: 2rem;
+  background: var(--bg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: percent 10s forwards ease-in-out;
+}
+#counter::before {
+  content: counter(num);
+  background: var(--bg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+@keyframes percent {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: 100;
+  }
 }
 
 html {
@@ -162,8 +296,8 @@ body {
   position: relative;
   border-width: 2px;
   border-style: solid;
-  border-image: var(--rainbow);
   border-image-slice: 1;
+  border-image: var(--rainbow);
 }
 @media (min-width: 1200px) {
   #customtext {
@@ -313,15 +447,12 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
   }
-
   .gameTitle span {
     font-size: 5vw;
   }
-
   .score {
     font-size: 1.7vw !important;
   }
-
   .grid {
     display: grid;
     grid-template-columns: auto auto !important;
