@@ -1,203 +1,205 @@
- *,
- root {
-     padding: 0;
-     margin: 0;
-     --trans: all 400ms;
-     user-select: none;
-     --bg: linear-gradient(234deg,
-             #ff9900,
-             #fe03b9,
-             #00fff2);
-     --rainbow: linear-gradient(90deg,
-             #00b3ff,
-             #d40dbd,
-             #ffb006);
-     --c-light-text: #333;
-     --c-background: #dedede;
-     --firstShadowColor: rgb(236, 236, 236);
-     --secondShadowColor: rgba(52, 52, 52, 0.277);
-     transition: var(--trans);
- }
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Nosifer&display=swap');
 
- $white: #dbddde;
+*,
+root {
+    padding: 0;
+    margin: 0;
+    --trans: all 400ms;
+    user-select: none;
+    --bg: linear-gradient(234deg,
+            #ff9900,
+            #fe03b9,
+            #00fff2);
+    --rainbow: linear-gradient(90deg,
+            #00b3ff,
+            #d40dbd,
+            #ffb006);
+    --c-light-text: #333;
+    --c-background: #dedede;
+    --firstShadowColor: rgb(236, 236, 236);
+    --secondShadowColor: rgba(52, 52, 52, 0.277);
+    transition: var(--trans);
+}
 
- body {
-     background-color: $white;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 100vh;
-     font-family: cinzel !important;
-     overflow: hidden;
-     transition: var(--trans);
- }
+$white: #dbddde;
 
- .form-con {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     //  padding: 2rem 10vw;
-     //  width: 100%;
- }
+body {
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: cinzel !important;
+    overflow: hidden;
+    transition: var(--trans);
+}
 
- .contact {
-     font-family: 'Nosifer', cursive;
-     background: $white;
-     border-radius: 20px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     width: 370px;
-     padding: 1rem;
-     border: 1px solid rgba(51, 51, 51, 0.136);
-     box-shadow: inset -4px -4px 5px var(--firstShadowColor),
-         inset 4px 4px 5px var(--secondShadowColor);
+.form-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    //  padding: 2rem 10vw;
+    //  width: 100%;
+}
 
-     p {
-         width: fit-content;
-         text-align: center;
-         background: var(--bg);
-         -webkit-background-clip: text;
-         -webkit-text-fill-color: transparent;
-         background-clip: text;
-         font-size: 1.5rem;
-         transition: var(--trans);
-     }
+.contact {
+    font-family: 'Nosifer', cursive;
+    background: $white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 370px;
+    padding: 1rem;
+    border: 1px solid rgba(51, 51, 51, 0.136);
+    box-shadow: inset -4px -4px 5px var(--firstShadowColor),
+        inset 4px 4px 5px var(--secondShadowColor);
 
- }
+    p {
+        width: fit-content;
+        text-align: center;
+        background: var(--bg);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 1.5rem;
+        transition: var(--trans);
+    }
 
- form {
-     min-width: 300px;
-     transition: var(--trans);
- }
+}
+
+form {
+    min-width: 300px;
+    transition: var(--trans);
+}
 
 
- /* From uiverse.io by @alexruix */
- .input-group {
-     position: relative;
-     display: flex;
-     justify-content: center;
-     flex-direction: column;
- }
+/* From uiverse.io by @alexruix */
+.input-group {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
- .input {
-     border: solid 1.5px #ffffff;
-     border-radius: 1rem;
-     background: none;
-     padding: 1rem;
-     font-size: 1rem;
-     box-shadow: inset -4px -4px 5px var(--firstShadowColor),
-         inset 4px 4px 5px var(--secondShadowColor);
-     transition: var(--trans);
- }
+.input {
+    border: solid 1.5px #ffffff;
+    border-radius: 1rem;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    box-shadow: inset -4px -4px 5px var(--firstShadowColor),
+        inset 4px 4px 5px var(--secondShadowColor);
+    transition: var(--trans);
+}
 
- .first {
-     margin-bottom: 1em;
-     margin-top: 2em;
- }
+.first {
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
 
- .user-label {
-     position: absolute;
-     left: 15px;
-     color: rgb(80, 78, 78);
-     pointer-events: none;
-     transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+.user-label {
+    position: absolute;
+    left: 15px;
+    color: rgb(80, 78, 78);
+    pointer-events: none;
+    transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
 
-     transition-timing-function: ease-in-out;
- }
+    transition-timing-function: ease-in-out;
+}
 
- .input:focus,
- input:valid {
-     outline: none;
-     border: 1.5px solid #000000;
- }
+.input:focus,
+input:valid {
+    outline: none;
+    border: 1.5px solid #000000;
+}
 
- .input:focus~label,
- input:valid~label {
-     transform: translateY(-100%);
-     margin-top: -5px;
-     background-color: $white;
-     padding: 0 .2em;
-     color: #000000;
-     font-weight: 600;
-     letter-spacing: 1.3px;
- }
+.input:focus~label,
+input:valid~label {
+    transform: translateY(-100%);
+    margin-top: -5px;
+    background-color: $white;
+    padding: 0 .2em;
+    color: #000000;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+}
 
- input:focus:invalid {
-     border: 1px solid red;
+input:focus:invalid {
+    border: 1px solid red;
 
-     ~label {
-         color: red;
-     }
- }
+    ~label {
+        color: red;
+    }
+}
 
- input:focus:valid {
-     border: 1px solid green;
+input:focus:valid {
+    border: 1px solid green;
 
-     ~label {
-         color: green;
-     }
- }
+    ~label {
+        color: green;
+    }
+}
 
- .btn {
-     display: flex;
-     justify-content: center;
+.btn {
+    display: flex;
+    justify-content: center;
 
-     .submit {
-         padding: 1rem;
-         font-family: 'Nosifer', cursive;
-         cursor: pointer;
+    .submit {
+        padding: 1rem;
+        font-family: 'Nosifer', cursive;
+        cursor: pointer;
 
-         &:active {
-             transform: scale(.9);
-         }
-     }
- }
+        &:active {
+            transform: scale(.9);
+        }
+    }
+}
 
- .submit {
-     border: 1px solid rgb(255, 254, 254);
-     font-size: 1em;
-     overflow: hidden;
-     position: relative;
-     z-index: 1;
-     border-radius: 10px;
-     margin-top: 2rem;
-     color: #131313;
-     background: transparent;
-     transition: var(--trans);
-     box-shadow: -4px -4px 5px var(--firstShadowColor),
-         4px 4px 5px var(--secondShadowColor);
+.submit {
+    border: 1px solid rgb(255, 254, 254);
+    font-size: 1em;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+    margin-top: 2rem;
+    color: #131313;
+    background: transparent;
+    transition: var(--trans);
+    box-shadow: -4px -4px 5px var(--firstShadowColor),
+        4px 4px 5px var(--secondShadowColor);
 
-     &::before {
-         content: '';
-         position: absolute;
-         top: 0;
-         left: 0;
-         height: 100%;
-         width: 0;
-         background: var(--rainbow);
-         z-index: -1;
-         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-         transition: all 250ms;
-     }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background: var(--rainbow);
+        z-index: -1;
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+    }
 
-     &:hover {
-         border: none;
-         -webkit-text-fill-color: #fff;
-         box-shadow: 5px 5px 42px #8c00ff,
-             -5px -1px 42px #ff009d,
-             0 0 82px #03fffb;
-         transition: all 400ms ease-in;
+    &:hover {
+        border: none;
+        -webkit-text-fill-color: #fff;
+        box-shadow: 5px 5px 42px #8c00ff,
+            -5px -1px 42px #ff009d,
+            0 0 82px #03fffb;
+        transition: all 400ms ease-in;
 
-         &::before {
-             width: 100%;
-         }
-     }
- }
+        &::before {
+            width: 100%;
+        }
+    }
+}
 
- .footer {
-     position: absolute;
-     bottom: 10px;
- }
+.footer {
+    position: absolute;
+    bottom: 10px;
+}
