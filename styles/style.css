@@ -305,13 +305,16 @@ body {
   }
 }
 
+.container {
+  display: none;
+}
 .container .content {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 .container .content .score {
-  margin: 2rem;
+  margin: 1rem;
   color: #fff;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   position: relative;
@@ -320,7 +323,7 @@ body {
   border-radius: 10px;
   padding: 1rem 10px;
   transition: var(--trans);
-  font-size: 1vw;
+  font-size: 15px;
   backdrop-filter: blur(6px);
 }
 @media (max-width: 500px) {
@@ -383,8 +386,8 @@ body {
   min-width: 400px;
 }
 .container .content .grid-con .grid img {
-  width: var(--imageSize);
-  height: var(--imageSize);
+  width: var(--imageSizeSmall);
+  height: var(--imageSizeSmall);
   border-radius: 10px;
   cursor: pointer;
   margin: 5px;
@@ -401,6 +404,9 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 .blurcon .blur {
   background: #000;
@@ -416,7 +422,6 @@ button {
   padding: 10px;
   font-family: cinzel;
   font-weight: 700;
-  font-size: 20px;
   border-radius: 12px;
   transition: var(--trans);
 }
@@ -441,25 +446,13 @@ button:active {
   transition: var(--trans);
 }
 
-@media (max-width: 1000px) {
-  html,
-body {
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
+@media (min-width: 1000px) {
   .gameTitle span {
-    font-size: 5vw;
-  }
-  .score {
-    font-size: 1.7vw !important;
+    font-size: 3vw;
   }
   .grid {
     display: grid;
     grid-template-columns: auto auto !important;
-  }
-  .grid img {
-    width: var(--imageSizeSmall) !important;
-    height: var(--imageSizeSmall) !important;
   }
 }
 .gameovercon {

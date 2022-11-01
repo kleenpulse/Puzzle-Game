@@ -190,7 +190,7 @@ body {
 
 .container {
 
-    // display: none;
+    display: none;
 
     .content {
         display: flex;
@@ -200,7 +200,7 @@ body {
 
 
         .score {
-            margin: 2rem;
+            margin: 1rem;
             color: #fff;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             position: relative;
@@ -209,7 +209,7 @@ body {
             border-radius: 10px;
             padding: 1rem 10px;
             transition: var(--trans);
-            font-size: calc(5vw * .2);
+            font-size: 15px;
             backdrop-filter: blur(6px);
 
             @media (max-width:500px) {
@@ -295,8 +295,8 @@ body {
                 min-width: 400px;
 
                 img {
-                    width: var(--imageSize);
-                    height: var(--imageSize);
+                    width: var(--imageSizeSmall);
+                    height: var(--imageSizeSmall);
                     border-radius: 10px;
                     cursor: pointer;
                     margin: 5px;
@@ -321,6 +321,10 @@ body {
     justify-content: center;
     margin-top: 1rem;
 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
     .blur {
         background: #000;
         // position: absolute;
@@ -341,7 +345,6 @@ button {
     padding: 10px;
     font-family: cinzel;
     font-weight: 700;
-    font-size: 20px;
     border-radius: 12px;
     transition: var(--trans);
 
@@ -371,36 +374,23 @@ button {
 
 }
 
-@media (max-width:1000px) {
+@media (min-width:1000px) {
 
-    html,
-    body {
-        overflow-y: scroll;
-        overflow-x: hidden;
-
-    }
 
     .gameTitle {
 
 
         span {
-            font-size: calc(25vw * .2);
+            font-size: calc(15vw * .2);
 
         }
-    }
-
-    .score {
-        font-size: calc(10vw * .17) !important;
     }
 
     .grid {
         display: grid;
         grid-template-columns: auto auto !important;
 
-        img {
-            width: var(--imageSizeSmall) !important;
-            height: var(--imageSizeSmall) !important;
-        }
+       
     }
 }
 
